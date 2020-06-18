@@ -4,8 +4,8 @@ import matplotlib.pyplot as plt
 def plotspec(ax, wav, flux, err=None, show_err=True,
              window_center=None, window_size=None,
              dcolor='b', ecolor='k',
-             xunit=r'$[\mathrm{\AA}]$'
-             yunit=r'$[\mathrm{erg \ s^{-1} \ cm^{-2} \ {2\AA}^{-1}}]$'
+             xunit=r'$[\mathrm{\AA}]$',
+             yunit=r'$[\mathrm{erg \ s^{-1} \ cm^{-2} \ {2\AA}^{-1}}]$'):
     '''
     Description
       Plot 1D spectrum with errorbars

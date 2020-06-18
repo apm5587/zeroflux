@@ -8,6 +8,10 @@ from astropy.visualization import (imshow_norm,
                                    SquaredStretch,
                                    LinearStretch)
 
+__all__ = ["angunit_to_latex", "label_angticks",
+           "showds9"]
+
+
 def angunit_to_latex(quantity):
     '''
     Description

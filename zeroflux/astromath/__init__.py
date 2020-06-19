@@ -1,3 +1,3 @@
 #
 
-__all__ = ["constants_cgs", "stat"]
+__all__ = ["constants_cgs", "stat", "funcs"]

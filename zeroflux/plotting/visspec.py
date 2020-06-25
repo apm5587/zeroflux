@@ -3,9 +3,9 @@ import matplotlib.pyplot as plt
 
 def plotspec(ax, wav, flux, err=None, show_err=True,
              window_center=None, window_size=None,
-             dcolor='b', ecolor='k',
              xunit=r'$[\mathrm{\AA}]$',
-             yunit=r'$[\mathrm{erg \ s^{-1} \ cm^{-2} \ {2\AA}^{-1}}]$'):
+             yunit=r'$[\mathrm{erg \ s^{-1} \ cm^{-2} \ {2\AA}^{-1}}]$',
+             **kwargs):
     '''
     Description
       Plot 1D spectrum with errorbars
@@ -38,12 +38,12 @@ def plotspec(ax, wav, flux, err=None, show_err=True,
         errs = errs[window]
 
     #step plot for fluxes
-    ax.step(wav, cnts, where='mid', color=dcolor)
+    ax.step(wav, cnts, where='mid', **kwargs)
 
     #add errorbars 
     if show_err:
         ax.errorbar(wav, cnts, yerr=err, 
-                    fmt='none', color=ecolor, alpha=0.5)
+                    fmt='none', **kwargs)
         
     ax.set_xlabel('Wavelength ' + xunit)
     ax.set_ylabel('Flux ' + yunit)

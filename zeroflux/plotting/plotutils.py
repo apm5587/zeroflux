@@ -2,6 +2,67 @@ import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib.ticker import LogFormatter
 
+def set_style():
+    '''
+    Description
+      Modify and call this function to set style elements
+      
+    Parameters
+      none
+
+    Returns
+      none
+    '''
+
+    #general color scheme
+    plt.style.use('seaborn-dark-palette')
+
+    #colors
+    plt.rc('axes', grid=True)
+    plt.rc('axes', facecolor='#EAEAF2')
+    plt.rc('axes', titlecolor='C2')
+    plt.rc('axes', labelcolor='C2')
+    plt.rc('lines', color='C2')
+    plt.rc('lines', markerfacecolor='C0')
+    plt.rc('patch', facecolor='C5')
+
+    #legibility
+    plt.rc('axes', titlesize=20)
+    plt.rc('axes', labelsize=16)
+    plt.rc('legend', fontsize=14)
+    plt.rc('xtick', labelsize=12)
+    plt.rc('ytick', labelsize=12)
+    
+    return
+
+def view_style(printparams=False):
+    '''
+    Description
+      Show font and color palette of matplotlib style
+      Generates a simple plot to display all colors
+
+    Parameters:
+      printparams: print entire list of modifiable style params
+
+    Returns:
+      none
+    '''
+    if printparams:
+        print(plt.rcParams.keys())
+        
+    fig = plt.figure()
+    ax = fig.add_subplot(111)
+    for i in range(len(plt.rcParams['axes.prop_cycle'])):
+        ax.plot([0,1], [i,i], color='C'+str(i), label='C'+str(i))
+    ax.set_xlabel('X Label')
+    ax.set_ylabel('Color #')
+    ax.set_title('Style Palette')
+    ax.legend()
+    plt.show()
+    
+    return
+
+
 def depower(num):
     '''
     Description
@@ -48,7 +109,8 @@ def minor_log_labels(minor_ticks, axmin, axmax, labmax, skip):
     
     return minor_ticks, minor_labels
     
-def loglabel(ax, labmaxx = 7., labmaxy=7., skipx=1, skipy=1, loglabx=True, loglaby=True, useformatter=False):
+def loglabel(ax, labmaxx = 7., labmaxy=7., skipx=1, skipy=1,
+             loglabx=True, loglaby=True, useformatter=False):
     '''
     Description
       Sensibly label log10 axes in matplotlib plots
@@ -96,3 +158,27 @@ def loglabel(ax, labmaxx = 7., labmaxy=7., skipx=1, skipy=1, loglabx=True, logla
             ax.set_yticklabels(new_labels, minor=True)
 
         return ax
+
+
+def histplot(ax, hist, edges, **kwargs):
+    '''
+    Description
+      plot histogram based on np.histogram
+      
+    Parameters
+      ax: matplotlib axes object
+      hist: histogram heights (from np.histogram)
+      edges: edges of histogram bars (from np.histogram)
+      
+    Returns
+      ax: matplotlib axes object
+      container: BarContainer from matplotlib
+    '''
+
+    width = edges[1]-edges[0]
+    centers = np.array([edge+width/2. for edge in edges[:-1]])
+
+    container = ax.bar(centers, hist, width, **kwargs)
+
+    
+    return ax, container

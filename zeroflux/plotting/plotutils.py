@@ -105,7 +105,6 @@ def minor_log_labels(minor_ticks, axmin, axmax, labmax, skip):
     minor_labels[minor_depowered > labmax] = ''
     #only show every "skip"th label
     minor_labels[np.arange(nticks) % skip != 0] = ''
-    print(minor_labels)
     
     return minor_ticks, minor_labels
     

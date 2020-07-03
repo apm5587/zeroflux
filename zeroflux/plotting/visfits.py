@@ -56,7 +56,6 @@ def label_angticks(tickvals, pixscale, tickstride, fmt, axmin, axmax):
     tickvals = tickvals[np.where( (tickvals>=axmin) &
                                   (tickvals<=axmax) )[0]] #restrict to observable axis 
     Nticks = int(axmax/tickstride)+1 # number of ticks to reach max
-    print(Nticks)
     newticks = np.array([i*tickstride for i in range(Nticks)]) #tick positions, pixels
     labvals = np.array([tick*pixscale.value for tick in newticks]) #tick labels, angular units
     newlabels = np.array([fmt % (val) for val in labvals]) #format decimal places
@@ -77,9 +76,10 @@ def showds9(ax, hdu, stretch=LinearStretch(), cmap='gray',
       stretch: see astropy.visualization for options
       cmap: matplotlib color map
       pixscale: pixel scale WITH astropy unit attached
-      tickevery: label tick marks every __ angular units
-                 requires pixscale
-                 the axis unit will adopt this unit
+      ticksevery: label tick marks every __ angular units
+                  must provide astropy unit
+                  requires pixscaleo
+                  the axis unit will adopt this unit
 
     Returns
       ax: Axes object
@@ -109,9 +109,6 @@ def showds9(ax, hdu, stretch=LinearStretch(), cmap='gray',
             #get axes limits in units of pixels
             xmin, xmax = ax.get_xlim()
             ymin, ymax = ax.get_ylim()
-            print('xlim', xmin, xmax)
-            print('ylim', ymin, ymax)
-            print('yvals', ax.get_yticks())
             
             #re-label x
             newxvals, newxlabs = label_angticks(np.array(ax.get_xticks()),
@@ -119,8 +116,7 @@ def showds9(ax, hdu, stretch=LinearStretch(), cmap='gray',
             #re-label y
             newyvals, newylabs = label_angticks(np.array(ax.get_yticks()),
                                                 pixscale, tickstride, fmt, ymin, ymax)
-            print(newyvals)
-            print(newylabs)
+            
             ax.set_xticks(newxvals)
             ax.set_xticklabels(newxlabs)
             ax.set_yticks(newyvals)

@@ -31,6 +31,9 @@ Msun = 1.989e33
 Mearth = 5.976e27
 Rearth = 6.378e8
 
+#planets
+Mjup = 1.898e30 
+
 #astro
 AU = 1.496e13
 pc = 3.086e18

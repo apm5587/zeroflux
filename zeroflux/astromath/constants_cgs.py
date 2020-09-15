@@ -6,7 +6,7 @@ NA = 6.022e23
 eV = 1.602e-12
 a_rad = 7.5646e-15
 sig = 5.67e-5
-G = 6.67e-08
+G = 6.674e-08
 h = 6.626e-27
 hbar = 1.0546e-27 
 h_eV = 4.1357e-15
@@ -38,15 +38,16 @@ Mjup = 1.898e30
 AU = 1.496e13
 pc = 3.086e18
 ly = 9.463e17
-arcsec = 4.848e-6 #rad 
-arcmin = 2.9089e-4 #rad
-deg = pi/180. #rad
-H0 = 70*((pc*10)**-1)
+arcsec = 4.848e-6 # [rad] 
+arcmin = 2.9089e-4 # [rad]
+deg = pi/180. # [rad]
+H0 = 70*((pc*10)**-1) #70 km/s/Mpc in [s]
+H_unit = (pc*10)**-1) #km/s/Mpc in [s]
 
 #time
-year = 3.156e7 #s
-day_sid = 86164.091 #s
-day_sol = 86400. #s
+year = 3.156e7 # [s]
+day_sid = 86164.091 # [s]
+day_sol = 86400. # [s]
 
 #greek
 atto = 1e-18

@@ -41,8 +41,8 @@ ly = 9.463e17
 arcsec = 4.848e-6 # [rad] 
 arcmin = 2.9089e-4 # [rad]
 deg = pi/180. # [rad]
-H0 = 70*((pc*10)**-1) #70 km/s/Mpc in [s]
-H_unit = (pc*10)**-1) #km/s/Mpc in [s]
+H0 = 70*((pc*10)**-1.) #70 km/s/Mpc in [s]
+H_unit = (pc*10)**-1. #km/s/Mpc in [s]
 
 #time
 year = 3.156e7 # [s]

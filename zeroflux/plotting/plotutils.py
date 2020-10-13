@@ -6,6 +6,8 @@ def set_style():
     '''
     Description
       Modify and call this function to set style elements
+      Example of options:
+      https://matplotlib.org/3.3.2/tutorials/introductory/customizing.html
       
     Parameters
       none
@@ -18,20 +20,36 @@ def set_style():
     plt.style.use('seaborn-dark-palette')
 
     #colors
-    plt.rc('axes', grid=True)
-    plt.rc('axes', facecolor='#EAEAF2')
-    plt.rc('axes', titlecolor='C2')
-    plt.rc('axes', labelcolor='C2')
-    plt.rc('lines', color='C2')
-    plt.rc('lines', markerfacecolor='C0')
-    plt.rc('patch', facecolor='C5')
+    #plt.rc('axes', grid=True)
+    #plt.rc('axes', facecolor='#EAEAF2')
+    #plt.rc('axes', titlecolor='C2')
+    #plt.rc('axes', labelcolor='C2')
+    #plt.rc('lines', color='C2')
+    #plt.rc('lines', markerfacecolor='C0')
+    #plt.rc('patch', facecolor='C5')
 
-    #legibility
-    plt.rc('axes', titlesize=20)
+    #legibility, font sizes
+    plt.rc('axes', titlesize=16)
     plt.rc('axes', labelsize=16)
     plt.rc('legend', fontsize=14)
+
+    #ticks 
     plt.rc('xtick', labelsize=12)
+    plt.rc('xtick', top=True)
+    plt.rc('xtick.minor', visible=True)
+    plt.rc('xtick.major.size'=5.)
+    plt.rc('xtick.major.width'=1.1)
+    plt.rc('xtick.minor.size'=3.)
+    plt.rc('xtick.minor.width'=0.8) 
+    plt.rc('xtick', direction='in')
     plt.rc('ytick', labelsize=12)
+    plt.rc('ytick', right=True)
+    plt.rc('ytick.minor', visible=True)
+    plt.rc('ytick.major.size'=5.)
+    plt.rc('ytick.major.width'=1.1)
+    plt.rc('ytick.minor.size'=3.)
+    plt.rc('ytick.minor.width'=0.8) 
+    plt.rc('ytick', direction='in')
     
     return
 

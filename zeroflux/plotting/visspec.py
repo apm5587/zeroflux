@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 def plotspec(ax, wav, flux, err=None, show_err=True,
              window_center=None, window_size=None,
              xunit=r'$[\mathrm{\AA}]$',
-             yunit=r'$[\mathrm{erg \ s^{-1} \ cm^{-2} \ {2\AA}^{-1}}]$',
+             yunit=r'$[\mathrm{erg \ s^{-1} \ cm^{-2} \ {\AA}^{-1}}]$',
              **kwargs):
     '''
     Description
@@ -19,32 +19,32 @@ def plotspec(ax, wav, flux, err=None, show_err=True,
       show_err: bool, plot errorbars
       window_center: window center in units of wav
       window_size: window size (+/- ws) in terms of indices 
-      dcolor: color for data
-      ecolor: color for error bars
-      xunit: string for units of x-axis
-      yunit: string for units of y-axis
+      xunit: string describing x-axis unit
+      yunit: string describing y-axis unit
 
     Returns
       Axes object
     '''
     
-    #only look at wavelength window if provided
-    if wc is not None and ws is not None:
+    #only look at wavelength window, if provided
+    if window_center is not None and window_size is not None:
         #index of window center
-        center_idx = np.argmin(np.abs(wav-wc))
-        window = np.arange(center_idx-ws, center_idx+ws)
+        center_idx = np.argmin(np.abs(wav-window_center))
+        window = np.arange(center_idx-window_size,
+                           center_idx+window_size)
         wav = wav[window]
-        cnts = cnts[window]
+        flux = flux[window]
         errs = errs[window]
 
     #step plot for fluxes
-    ax.step(wav, cnts, where='mid', **kwargs)
+    ax.step(wav, flux, where='mid', **kwargs)
 
     #add errorbars 
     if show_err:
-        ax.errorbar(wav, cnts, yerr=err, 
+        ax.errorbar(wav, flux, yerr=err, 
                     fmt='none', **kwargs)
-        
+
+    #label with customizable units
     ax.set_xlabel('Wavelength ' + xunit)
     ax.set_ylabel('Flux ' + yunit)
     
